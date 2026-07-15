@@ -2,9 +2,17 @@
 
 ## Vision
 
-Build an AI-assisted workflow that helps implementers create FHIR profiles using the existing HL7 ecosystem.
+Build an AI-assisted profile generation framework that integrates with the standard HL7 FHIR tooling ecosystem.
 
-The goal is not to replace standards-based tooling, but to augment it by integrating AI with FSH, SUSHI, and validation workflows.
+Rather than replacing established standards-based tools, the framework augments them by combining Large Language Models (LLMs), FHIR Shorthand (FSH), SUSHI, and iterative validation into a single developer workflow.
+
+The long-term goal is to reduce the barrier to creating high-quality FHIR Implementation Guides while remaining compatible with existing HL7 tooling and standards.
+
+---
+
+## Research Question
+
+Can a Large Language Model generate valid FHIR Shorthand (FSH) from existing FHIR resources and iteratively improve the generated artifacts using compiler feedback from the standard HL7 toolchain?
 
 ---
 
