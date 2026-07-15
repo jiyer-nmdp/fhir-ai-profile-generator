@@ -1,0 +1,24 @@
+{
+  "name": "fhir-ai-profile-generator",
+  "version": "0.1.0",
+  "description": "An experimental proof of concept that explores AI-assisted generation of FHIR profiles using the standard HL7 FHIR tooling ecosystem.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiyer-nmdp/fhir-ai-profile-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jiyer-nmdp/fhir-ai-profile-generator/issues"
+  },
+  "homepage": "https://github.com/jiyer-nmdp/fhir-ai-profile-generator#readme"
+}

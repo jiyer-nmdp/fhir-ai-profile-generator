@@ -1,0 +1,17 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://hospital.example.org/mrn",
+      "value": "12345"
+    }
+  ],
+  "name": [
+    {
+      "family": "Doe",
+      "given": ["John"]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-01-01"
+}

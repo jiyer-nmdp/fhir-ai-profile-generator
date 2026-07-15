@@ -32,7 +32,7 @@ These activities present a significant learning curve.
 
 ## Hypothesis
 
-An LLM can assist implementers by:
+An AI-assisted workflow that combines LLM-generated FSH with the standard HL7 validation toolchain can reduce the effort required to create valid FHIR profiles while preserving compatibility with existing standards and tooling.
 
 1. Generating draft FSH
 2. Compiling using SUSHI
@@ -42,48 +42,55 @@ An LLM can assist implementers by:
 ---
 
 ## MVP
+The initial proof of concept intentionally focuses on a single FHIR resource (Patient) in order to validate the architecture before expanding to additional resource types.
 
-Input:
+#### Input: FHIR Patient resource
 
-FHIR Patient resource
+#### Output: Compiled StructureDefinition
 
-Output:
-
-Compiled StructureDefinition
-
-Workflow:
+#### Workflow:
 
 Patient JSON
 
 ↓
 
-Generate FSH
+Orchestrator
 
 ↓
 
-Compile
+FSH Generator
 
 ↓
 
-Capture diagnostics
+patient.fsh
 
 ↓
 
-(Repair loop)
+SUSHI
+
+↓
+
+Compiler Output
+
+↓
+
+Repair loop (agent)
 
 ---
 
 ## Success Criteria
 
-Competition submission demonstrates:
+The proof of concept demonstrates:
 
-✓ AI-generated FSH
+✓ Generation of FSH from a FHIR Patient resource
 
-✓ Successful SUSHI compilation
+✓ Successful compilation using SUSHI
 
-✓ Clear workflow
+✓ Capture of compiler diagnostics
 
-✓ Learning documented
+✓ Demonstration of an iterative validation workflow
+
+✓ Clear architecture and documented design decisions
 
 ---
 
