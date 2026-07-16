@@ -30,21 +30,27 @@ The proof of concept implements an agent-oriented pipeline:
 
 Patient JSON
     |
+    v
     
 Architect Agent
     |
+    v
     
 Profile Specification
     |
+    v
     
 FSH Generator Agent
     |
+    v
     
 FHIR Shorthand (FSH)
     |
+    v
     
 SUSHI Compiler
     |
+    v
     
 FHIR StructureDefinition
 
