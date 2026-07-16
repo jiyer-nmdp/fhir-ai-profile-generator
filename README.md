@@ -24,21 +24,39 @@ This project explores whether AI can assist implementers during that workflow.
 
 ---
 
-## Current Scope (MVP)
+## Current Architecture
 
-The initial proof of concept focuses on a single workflow.
+The proof of concept implements an agent-oriented pipeline:
 
-```
 Patient JSON
-      ↓
-Generate FSH
-      ↓
-Compile with SUSHI
-      ↓
-Capture compiler diagnostics
-      ↓
-(Repair loop - next phase)
-```
+    |
+    v
+Architect Agent
+    |
+    v
+Profile Specification
+    |
+    v
+FSH Generator Agent
+    |
+    v
+FHIR Shorthand (FSH)
+    |
+    v
+SUSHI Compiler
+    |
+    v
+FHIR StructureDefinition
+
+
+## Future Work
+
+Future iterations will introduce:
+
+- LLM-powered reasoning agents
+- MCP-based tooling integration
+- ACP-based multi-agent collaboration
+- Automated repair loops using compiler feedback
 
 ---
 
