@@ -27,7 +27,7 @@ This project explores whether AI can assist implementers during that workflow.
 ## Current Architecture
 
 The proof of concept implements an agent-oriented pipeline:
-
+```
 Patient JSON
     |
     v
@@ -53,7 +53,7 @@ SUSHI Compiler
     v
     
 FHIR StructureDefinition
-
+```
 
 ## Future Work
 
