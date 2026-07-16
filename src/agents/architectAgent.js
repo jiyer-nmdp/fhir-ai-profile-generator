@@ -17,7 +17,7 @@ class ArchitectAgent {
                 max: "*"
             },
             gender: {
-                min: 2,
+                min: 0,
                 max: "1"
             },
             birthDate: {
