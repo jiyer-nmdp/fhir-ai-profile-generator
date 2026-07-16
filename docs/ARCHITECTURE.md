@@ -21,9 +21,7 @@
                     Compiler Diagnostics
                               |
                               v
-                      Repair Agent
-                              |
-                              |
+                      Repair Agent                             
                        (Future Loop)
 
 
