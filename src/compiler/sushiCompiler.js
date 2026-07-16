@@ -12,8 +12,7 @@ const execPromise = util.promisify(exec);
 class SushiCompiler {
 
     async compile(fshInput) {
-        console.log("=== Running SUSHI Compiler ===");
-        console.log(fshInput);
+        console.log("\n\n[4/5] Running SUSHI Compiler");
 
         const sushiProjectPath = path.join(
             __dirname,
@@ -37,10 +36,54 @@ class SushiCompiler {
                     cwd: sushiProjectPath,
                 }
             );
-            return new CompilerOutput(true, stdout, stderr);
+            const artifacts = this.discoverArtifacts(sushiProjectPath);
+            this.saveExecutionLogs(fshInput, stdout, stderr);
+            return new CompilerOutput(true, stdout, stderr, artifacts);
         } catch (error) {
+            this.saveExecutionLogs(fshInput, error.stdout, error.stderr);
             return new CompilerOutput(false, error.stdout, error.stderr);
         }
+    }
+
+    // Find generated artifacts for compileroutput
+    discoverArtifacts(sushiProjectPath) {
+        const artifactPath = path.join( sushiProjectPath, 'fsh-generated/resources');
+        if (!fs.existsSync(artifactPath)) {
+            return [];
+        }
+        return fs.readdirSync(artifactPath)
+            .filter(file => file.endsWith('.json'));
+
+    }
+
+    saveExecutionLogs(fshInput, stdout, stderr) {
+        const logsPath = path.join(
+            __dirname,
+            "../../logs"
+        );
+
+        if (!fs.existsSync(logsPath)) {
+            fs.mkdirSync(logsPath, { recursive: true });
+        }
+
+        const compilerLogPath = path.join(
+            logsPath,
+            "sushi-output.log"
+        );
+
+        fs.writeFileSync(
+            compilerLogPath,
+            stdout + "\n\nSTDERR\n\n" + stderr
+        );
+
+        const generatedFshPath = path.join(
+            logsPath,
+            "generated.fsh"
+        );
+        fs.writeFileSync(
+            generatedFshPath,
+            fshInput
+        );
     }
 }
 

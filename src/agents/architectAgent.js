@@ -1,8 +1,7 @@
 class ArchitectAgent {
 
     async generateSpecification(patientJson) {
-        console.log('Architect Agent');
-
+        console.log('\n\n[1/5] Architect Agent');
         console.log('Received - ', patientJson.resourceType);
 
         // Rules for cardinality
@@ -18,7 +17,7 @@ class ArchitectAgent {
                 max: "*"
             },
             gender: {
-                min: 0,
+                min: 2,
                 max: "1"
             },
             birthDate: {

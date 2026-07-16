@@ -1,10 +1,7 @@
 class FshGeneratorAgent {
 
     async generateFSH(specification) {
-        console.log('FSH Generator');
-
         let fsh = '';
-
         fsh += `Profile: ${specification.profileName}\n`;
         fsh += `Parent: ${specification.resourceType}\n\n`;
 
@@ -13,6 +10,8 @@ class FshGeneratorAgent {
             fsh += `* ${field} ${constraint.min}..${constraint.max}\n`;
 
         });
+        console.log('\n\n[3/5] FSH Generator');
+        console.log(fsh);
         return fsh;
     }
 }

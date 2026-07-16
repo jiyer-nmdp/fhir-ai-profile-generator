@@ -2,16 +2,35 @@ const Orchestrator = require('./orchestrator/orchestrator');
 
 async function main() {
     try {
+        console.log('\n\n=========================================================\n' +
+            'FHIR AI Profile Generator\n' +
+            'HL7 FHIR + AI Challenge 2026\n' +
+            'AI-assisted FHIR Profile Generation using FSH + SUSHI\n' +
+            '=========================================================')
         const orchestrator = new Orchestrator();
         const patient = require('../examples/patient.json');
         const result = await orchestrator.run(patient);
         if(result.success) {
-            console.log("Pipeline completed successfully");
+            console.log("\n\n[5/5] Pipeline Summary\n");
+            console.log("Success :", result.success);
+            console.log("\nGenerated Artifacts:");
+            console.log("-------------------");
+            result.artifacts.forEach(file => {
+                console.log(" -", file);
+            });
+            console.log('\n\nGenerated Files:');
+            console.log('----------------');
+            console.log(' - logs/generated.fsh');
+            console.log(' - logs/sushi-output.log');
+            console.log(' - sushi-project/fsh-generated/resources/StructureDefinition-GeneratedPatient.json');
+            console.log('\n\nPipeline completed successfully.');
+            console.log('FHIR profile generated and compiled using the HL7 SUSHI toolchain.');
         }
         else {
-            console.log("Pipeline failed");
+            console.log("\n\n[5/5] Pipeline Failure");
+            console.log('Success :', result.success );
+            console.log(result.errors);
         }
-        console.log(JSON.stringify(result, null, 2));
     } catch (error) {
         console.log(error);
     }

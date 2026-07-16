@@ -12,7 +12,7 @@ class Orchestrator {
 
     async run(patientJson) {
         const specification = await this.architect.generateSpecification(patientJson);
-        console.log('=== Profile Specification ===');
+        console.log('\n\n[2/5] Generated Profile Specification');
         console.log( JSON.stringify(specification, null, 2) );
         const fsh = await this.fshgenerator.generateFSH(specification);
         const compilerOutput = await this.sushicompiler.compile(fsh)
