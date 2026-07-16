@@ -5,8 +5,13 @@ async function main() {
         const orchestrator = new Orchestrator();
         const patient = require('../examples/patient.json');
         const result = await orchestrator.run(patient);
-        console.log('Pipeline completed successfully.');
-        console.log(result);
+        if(result.success) {
+            console.log("Pipeline completed successfully");
+        }
+        else {
+            console.log("Pipeline failed");
+        }
+        console.log(JSON.stringify(result, null, 2));
     } catch (error) {
         console.log(error);
     }

@@ -1,14 +1,46 @@
+// This will create a .fsh file that can be used as input for SUSHI in the future
+
+const {exec} = require('child_process');
+const util = require('util');
+const fs = require('fs');
+const path = require('path');
+
+const CompilerOutput = require("../models/compilerOutput");
+
+const execPromise = util.promisify(exec);
+
 class SushiCompiler {
 
-    async compile(fshFile) {
+    async compile(fshInput) {
         console.log("=== Running SUSHI Compiler ===");
-        console.log(fshFile);
+        console.log(fshInput);
 
-        return {
-            success: true,
-            diagnostics: [],
-            generatedFsh: fshFile
-        };
+        const sushiProjectPath = path.join(
+            __dirname,
+            "../..//sushi-project"
+        );
+
+        const fshPath = path.join(
+            sushiProjectPath,
+            "input/fsh/ai-generated-patient.fsh"
+        );
+
+        fs.writeFileSync(
+            fshPath,
+            fshInput
+        );
+
+        try {
+            const {stdout, stderr } = await execPromise(
+                'npx sushi .',
+                {
+                    cwd: sushiProjectPath,
+                }
+            );
+            return new CompilerOutput(true, stdout, stderr);
+        } catch (error) {
+            return new CompilerOutput(false, error.stdout, error.stderr);
+        }
     }
 }
 

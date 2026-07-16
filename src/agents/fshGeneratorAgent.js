@@ -1,15 +1,19 @@
 class FshGeneratorAgent {
 
     async generateFSH(specification) {
-        console.log("FSH Generator");
+        console.log('FSH Generator');
 
-        return `
-            Profile: GeneratedPatient
-            Parent: Patient
-            * identifier 1..*
-            * name 1..*
-            * gender 1..1
-        `;
+        let fsh = '';
+
+        fsh += `Profile: ${specification.profileName}\n`;
+        fsh += `Parent: ${specification.resourceType}\n\n`;
+
+        specification.constraints.forEach(constraint => {
+            const field = constraint.path.split('.')[1];
+            fsh += `* ${field} ${constraint.min}..${constraint.max}\n`;
+
+        });
+        return fsh;
     }
 }
 

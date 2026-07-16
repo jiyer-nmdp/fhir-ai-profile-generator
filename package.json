@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/jiyer-nmdp/fhir-ai-profile-generator/issues"
   },
-  "homepage": "https://github.com/jiyer-nmdp/fhir-ai-profile-generator#readme"
+  "homepage": "https://github.com/jiyer-nmdp/fhir-ai-profile-generator#readme",
+  "devDependencies": {
+    "fsh-sushi": "^3.20.0"
+  }
 }
